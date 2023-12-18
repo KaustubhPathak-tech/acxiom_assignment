@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 import {
   FormControl,
@@ -14,12 +14,11 @@ import {
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Visibility } from "@mui/icons-material";
 import { VisibilityOff } from "@mui/icons-material";
-import { signup } from "../../actions/auth";
-
+import { signup, login } from "../../actions/auth";
 
 const Login = () => {
-  const navigate=useNavigate();
-  const dispatch=useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [Switch, setSwitch] = React.useState(false);
   const [role, setRole] = React.useState("");
   const [category, setCategory] = React.useState("");
@@ -37,21 +36,28 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    console.log(userId, password);
+    dispatch(login({ email: userId, password }, navigate));
     console.log("Login button clicked");
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log(name,email,role,password);
-    dispatch(signup({name,email,accountType:role,password},navigate));
+    console.log(name, email, role, password,category);
+    if (role === "Vendor") {
+      dispatch(
+        signup({ name, email, accountType: role, category, password }, navigate)
+      );
+    } else {
+      dispatch(signup({ name, email, accountType: role, password }, navigate));
+    }
     console.log("Register button clicked");
   };
   const handleChange = (event) => {
     setRole(event.target.value);
-    if(event.target.value === "Vendor"){
+    if (event.target.value === "Vendor") {
       setVendor(true);
-    }
-    else{
+    } else {
       setVendor(false);
     }
   };
@@ -192,10 +198,10 @@ const Login = () => {
                       label="category"
                       onChange={handleCategoryChange}
                     >
-                      <MenuItem value="Vendor">Catering</MenuItem>
-                      <MenuItem value="User">Florist</MenuItem>
-                      <MenuItem value="User">Decoration</MenuItem>
-                      <MenuItem value="User">Lighting</MenuItem>
+                      <MenuItem value="Catering">Catering</MenuItem>
+                      <MenuItem value="Florist">Florist</MenuItem>
+                      <MenuItem value="Decoration">Decoration</MenuItem>
+                      <MenuItem value="Lighting">Lighting</MenuItem>
                     </Select>
                   </FormControl>
                 </>

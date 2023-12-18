@@ -1,6 +1,6 @@
 import axios from "axios";
 const API = axios.create({
-  baseURL: "", //http://localhost:7000 https://med-hos-server.vercel.app
+  baseURL: "http://localhost:5000", //http://localhost:7000 https://acxiom-assignment.vercel.app
 });
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("Profile")) {
@@ -10,5 +10,6 @@ API.interceptors.request.use((req) => {
   }
   return req;
 });
+export const logIn = (authData) => API.post("/auth/login", authData);
 
 export const signUp = (authData) => API.post("/auth/signup", authData);
