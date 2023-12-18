@@ -227,7 +227,7 @@ const Login = () => {
               id="userlogin"
               style={{ textAlign: "center" }}
             >
-              <FormControl fullWidth>
+              {/* <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Age</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
@@ -240,7 +240,7 @@ const Login = () => {
                   <MenuItem value={20}>Twenty</MenuItem>
                   <MenuItem value={30}>Thirty</MenuItem>
                 </Select>
-              </FormControl>
+              </FormControl> */}
               <TextField
                 name="userid"
                 type="text"

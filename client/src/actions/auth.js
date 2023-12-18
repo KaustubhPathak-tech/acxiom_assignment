@@ -15,7 +15,14 @@ export const login = (authData, navigate) => async (dispatch) => {
   try {
     const { data } = await api.logIn(authData);
     dispatch({ type: "LOGIN", data });
-    navigate("/user/");
+    if (data.user.accountType === "Vendor") {
+      navigate("/vendor/");
+    }
+    else if (data.user.accountType === "User") {
+      navigate("/user/");
+    } else if (data.user.accountType === "Admin") {
+      navigate("/admin/");
+    }
     console.log(data);
   } catch (error) {
     console.log(error);
