@@ -1,6 +1,6 @@
 import axios from "axios";
 const API = axios.create({
-  baseURL: "http://localhost:5000", //http://localhost:7000 https://acxiom-assignment.vercel.app
+  baseURL: "https://acxiomerpbackend.vercel.app/", 
 });
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("Profile")) {
