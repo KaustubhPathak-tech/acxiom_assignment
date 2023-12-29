@@ -14,14 +14,28 @@ const userSchema = new mongoose.Schema(
         required: true,
 
       },],
-    consumer:[{
+    user:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",//Consumer.js // kon sa consumer kharida hai
         required: true,
 
       },],
+      address:{
+        type:"string",
+        required:true
+      },
+      price:{
+        type:"string",
+      }
+      ,
+      payment:{
+        type:"string",
+        enum: ["cash", "UPI"],
+        required:true,
 
-      ordered: {
+      }
+,
+      status: {
         type: String,
         enum: ["Recieved", "Shipped", "Deleivered"],
         required: true,

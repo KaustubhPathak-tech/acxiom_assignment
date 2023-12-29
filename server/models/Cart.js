@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",//Vendor.js //kis vendor se liya gya hai
       },],
-    consumer:[{
+    user:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",//Consumer.js // kon sa consumer cart me add kiya hai
       },]

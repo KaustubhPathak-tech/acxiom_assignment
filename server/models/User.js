@@ -13,18 +13,20 @@ const userSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+
     password: {
       type: String,
       required: true,
     },
-    category: {
-      type: String,
-      enum: ["Category", "Florist", "Decoration","Lighting",""],
-      default:""
-    },
     confirmPassword: {
       type: String,
       // required: true,
+    },
+    category:{
+      type: String,
+      enum: ["Catering", "Florist", "Decoration","Lighting",""],
+      default:""
+
     },
     accountType: {
       type: String,
@@ -37,7 +39,6 @@ const userSchema = new mongoose.Schema(
         ref: "item",//Item.js //is vendor ke pass kya item hai
       },
     ],
-
     reqitems: [
       {
         type: mongoose.Schema.Types.ObjectId,

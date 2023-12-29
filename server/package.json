@@ -1,16 +1,14 @@
 {
-  "name": "vendor-server",
+  "name": "server",
   "version": "1.0.0",
-  "description": "It's robust server of vendor.com",
+  "description": "",
   "main": "index.js",
-  "engines": {
-    "node": "18.x"
-  },
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
-  "author": "Kaustubh Pathak",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",

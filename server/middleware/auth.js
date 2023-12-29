@@ -9,7 +9,7 @@ dotenv.config();
 
 // This function is used as middleware to authenticate user requests
 
-exports.auth = (req,res) => {
+exports.auth = (req,res,next) => {
     try{
         //extract JWT token
         //PENDING : other ways to fetch token
@@ -33,7 +33,9 @@ exports.auth = (req,res) => {
             console.log(payload);
             //why this ?
             req.user = payload;
-        } catch(error) {
+			console.log(req.user.id)
+			next();
+        } catch(error) { 
             return res.status(401).json({
                 success:false,
                 message:'token is invalid',
@@ -50,14 +52,14 @@ exports.auth = (req,res) => {
    
 }
 
-exports.isConsumer = async (req, res, next) => {
+exports.isUser = async (req, res, next) => {
 	try {
 		const userDetails = await User.findOne({ email: req.user.email });
 
-		if (userDetails.accountType !== "Consumer") {
+		if (userDetails.accountType !== "User") {
 			return res.status(401).json({
 				success: false,
-				message: "This is a Protected Route for Consumer",
+				message: "This is a Protected Route for User",
 			});
 		}
 		next();
